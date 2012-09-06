@@ -1,0 +1,128 @@
+/* CSS Document */
+#frame{
+	margin:auto;
+	width:1024px;
+}
+#banner{
+	margin:0px;
+	width:1024px;
+	height:230px;
+	background-color:#FFFFFF;
+	background-image:url(images/banner.jpg);
+	background-repeat:no-repeat;
+}
+#content{
+	width:1024px;
+	background-color:#FFFFFF;
+	background-image:url(images/bg_image.jpg);
+	background-repeat:repeat-y;
+}
+#leftpanel {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	width: 200px;
+	padding-left:20px;
+	padding-right:20px;
+}
+#navigation{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding-left:24px;
+	margin: 0 0 0 0;
+}
+#rightpanel {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	padding-right:0px;
+	width: 520px;
+}
+#footer {
+	clear:both;
+	width: 1024px;
+	height:142px;
+	text-align:center;
+	background-image:url(images/footer.jpg);
+	background-repeat:no-repeat;
+}
+p.disclaimer{
+	text-align:left;
+	font-family:"Courier New", Courier, monospace;
+	font-size:12px;
+	vertical-align:bottom;
+}
+a:link {
+	font-family:Century Gothic, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+}
+a:visited {
+	font-family:Century Gothic, Arial, Helvetica, sans-serif;
+	color:#999999;
+}
+a:hover {
+	color:#33CCFF;
+	font-family:Century Gothic, Arial, Helvetica, sans-serif;
+	font-family:Century Gothic, Arial, Helvetica, sans-serif;
+}
+ul.navigation {
+	list-style:url(images/listitem3.jpg);
+	text-indent:0em;
+	margin-left:0px;
+	padding-left:20px;
+	width:100%;
+}
+ul.navigation ul{
+	padding-left:10px;
+}
+li.here {
+	list-style:url(images/listitem2.jpg);
+}
+.photo img{
+	padding: 4px;
+	position:relative;
+}
+.figure {
+	float:left;
+	width:110px;
+	margin: 0 10px 10px 10px;
+}
+.figure p {
+	font: 1.1em/normal Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin:10px 0 0 0;
+	height:5em;
+}
+h1 {
+	text-align:center;
+	font-family:Century Gothic, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+}
+h3 {
+	font-size:14px;
+	}
+h1.mainLink {
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:24px;
+}
+img.thumb {
+	display:inline;
+	float:left;
+	background-repeat:no-repeat;
+	padding-right:5px;
+}
+img.seperator{
+	margin:0;
+}
+table{
+	background-color:#FFFFFF;
+	color:#000000;
+}
+td.left {
+	vertical-align:top;
+	padding-right:3px;
+	text-align:right;
+}
+p.disclaim {
+	text-align:center;
+	vertical-align:bottom;
+}
