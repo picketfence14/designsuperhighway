@@ -1,0 +1,42 @@
+!!!HTML
+%html
+	%head
+	%meta(name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1")
+		%link(rel="stylesheet" href="css/layout.css")
+		%link(rel="stylesheet" href="css/simple.css")
+
+		%script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js")
+		%script(src="jquery.pikachoose.js")
+		%script(language="javascript")
+			$(document).ready(function (){
+				$("#pikame").PikaChoose();
+			});
+		%title
+			{{page.title}}
+	%body			
+		%div(data-role="page")
+			%header
+				%img(src="images/logo.png" alt="Design Super Highway LLC" width="128px" height="128px" id="DSHlogo")
+				%nav
+					%ul
+						%li
+							<a href="index.html">Home</a>
+						%li
+							<a href="portfolio2.html">Portfolio</a>
+						%li
+							<a href="http://picketfence14.wordpress.com">Blog</a>
+						%li
+							<a href="contact2.html">Contact</a>
+				%section#search
+				<br />
+				%form
+					%input(type="text" size="10" maxlength="30" value="search")
+					%input(type="submit" value="search")
+			%div.clear
+			{{content}}
+			%div.clear
+			%footer
+				%h6
+					Created by: Design Superhighway LLC. &copy; 2012.<br />
+					%a{:href="mailto:bsmith@designsuperhighway.com"}
+						bsmith@designsuperhighway.com

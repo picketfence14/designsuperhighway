@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head></head>
+  <meta content='user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1' name='viewport'>
+    <link href='css/layout.css' rel='stylesheet' />
+    <link href='css/jquery.mobile.css' rel='stylesheet' />
+    <link href='css/jquery.mobile.scrollview.css' rel='stylesheet' />
+    <!-- the line below is required for access to the appMobi JS library -->
+    <script charset='utf-8' src='http://localhost:58888/_appMobi/appmobi.js' type='text/javascript'></script>
+    <script src='js/jquery.js'></script>
+    <script src='js/jquery.mobile.js'></script>
+    <script src='js/json2.js'></script>
+    <script src='js/iscroll.js'></script>
+    <script src='js/jquery.pageslide.js'></script>
+    <script src='js/modernizr.js'></script>
+    <script src='js/functions.js'></script>
+    <script src='js/hw_backbutton.js'></script>
+    <script>
+      var TargetDate = "10/21/2012 7:00 AM";
+      var CountActive = true;
+      var CountStepper = -1;
+      var LeadingZero = true;
+      var DisplayFormat = "<div class='title'>Detroit Free Press /</div><div class='title'>Talmer Bank Marathon</div><div class='wrap'><span>%%D%%<br>Days</span><span>%%H%%<br>Hours</span><span>%%M%%<br>Minutes</span><span>%%S%%<br>Seconds</span></div>";
+      var FinishMessage = "Race Day!";
+    </script>
+    <script src='http://maps.googleapis.com/maps/api/js?sensor=true'></script>
+    <script src='http://www.google.com/jsapi'></script>
+    <script>
+      google.load('visualization', '1');
+    </script>
+    <title>
+      {{page.title}}
+    </title>
+  </meta>
+  <body>
+    <div id='tutorial'>
+      <img class='left' src='img/tutorial.png' />
+      <!-- %img.right(src="img/register.png") -->
+      <div class='blackout'></div>
+    </div>
+    <div class='finish-img'></div>
+    <div class='map' id='map-canvas'></div>
+    <div id='course-select'></div>
+    <div id='marker-select'></div>
+    <div id='select-opts'>
+      <div id='course-select-opts'>
+        <button>
+          Update Map
+        </button>
+        <div id='map-scroll1'>
+          <div>
+            <input checked='true' class='checkbox' type='checkbox' value='course-marathon' />
+            <label>
+              Marathon
+            </label>
+            <input class='checkbox' type='checkbox' value='course-half-marathon' />
+            <label>
+              Half Marathon
+            </label>
+            <input class='checkbox' type='checkbox' value='course-us-half-marathon' />
+            <label>
+              US Half Marathon
+            </label>
+            <input class='checkbox' type='checkbox' value='course-5k' />
+            <label>
+              Fitness 5k
+            </label>
+            <input class='checkbox' type='checkbox' value='course-marathon-relay' />
+            <label>
+              Relay Marathon
+            </label>
+            <div class='clear'></div>
+          </div>
+        </div>
+      </div>
+      <div id='marker-select-opts'>
+        <button>
+          Update Map
+        </button>
+        <div id='map-scroll2'>
+          <div>
+            <input checked='true' class='checkbox' type='checkbox' value='start-line' />
+            <label>
+              Start Line
+            </label>
+            <input checked='true' class='checkbox' type='checkbox' value='mile-marker' />
+            <label>
+              Mile Markers
+            </label>
+            <input class='checkbox' type='checkbox' value='kilometer-marker' />
+            <label>
+              Kilometer Markers
+            </label>
+            <input class='checkbox' type='checkbox' value='relay-exchange' />
+            <label>
+              Relay Exchanges
+            </label>
+            <input class='checkbox' type='checkbox' value='water-stop' />
+            <label>
+              Water Stops
+            </label>
+            <input class='checkbox' type='checkbox' value='first-aid' />
+            <label>
+              First Aid Stations
+            </label>
+            <input class='checkbox' type='checkbox' value='porta-johns' />
+            <label>
+              Porta Johns
+            </label>
+            <input class='checkbox' type='checkbox' value='spirit-station' />
+            <label>
+              Spirit Stations
+            </label>
+            <input class='checkbox' type='checkbox' value='music-stage' />
+            <label>
+              Music Stages
+            </label>
+            <input class='checkbox' type='checkbox' value='parking' />
+            <label>
+              Parking
+            </label>
+            <input class='checkbox' type='checkbox' value='bus-stop' />
+            <label>
+              Bus Stops
+            </label>
+            <div class='clear'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a id='toggle-location'></a>
+    <div class='runner-modal'>
+      <h3>
+        Runner Updates
+      </h3>
+      <div class='modal-scroll buttons'>
+        <span>
+          The last timing mat your runner crossed is listed below. Tap the runner's name to view all timing mats.
+        </span>
+        <ul class='modal-list'></ul>
+        <span class='clear'></span>
+      </div>
+    </div>
+    <div class='menu-list' id='wrapper'>
+      <ul>
+        <li class='active'>
+          <a class='contentLink' href='index.html'>
+            Home
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='live-results.html'>
+            Live Runner Tracking
+          </a>
+        </li>
+        <li>
+          <a class='contentLink help' href='#'>
+            App Help
+          </a>
+        </li>
+        <li class='divider'>
+          <a class='contentLink' href='#' menu='race-events'>
+            Race Events
+          </a>
+        </li>
+        <!--
+          <li>
+            <a class='contentLink external register' href='http://www.active.com/marathon/detroit-mi/detroit-free-press-talmer-bank-marathon-2012' menu='race-events'>
+              Register Now
+            </a>
+          </li>
+        -->
+        <li>
+          <a class='contentLink' href='marathon.html' menu='race-events'>
+            Marathon
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='disabilities-division.html' menu='race-events'>
+            Disabilities Division
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='relay.html' menu='race-events'>
+            5-Person Relay
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='int-half.html' menu='race-events'>
+            International Half-Marathon
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='us-half.html' menu='race-events'>
+            U.S.-Only Half-Marathon
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='5k.html' menu='race-events'>
+            5K Run/Walk
+          </a>
+        </li>
+        <li class='divider'>
+          <a class='contentLink' href='#' menu='race-events'>
+            Information
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='afterParty.html' menu='race-events'>
+            After Party
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='expo.html' menu='race-events'>
+            Expo
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='faqs.html' menu='race-events'>
+            FAQ's
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='genInfo.html' menu='race-events'>
+            General Infomation
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='packet.html' menu='race-events'>
+            Packet Pickup
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='prizes.html' menu='race-events'>
+            Prizes
+          </a>
+        </li>
+        <li>
+          <a class='contentLink' href='sponsors.html' menu='race-events'>
+            Race Sponsors
+          </a>
+        </li>
+        <li>
+          <a class='contentLink'>
+            &nbsp;
+          </a>
+        </li>
+        <li class='clear'></li>
+      </ul>
+    </div>
+    <div data-role='page'>
+      <header class='toolbar' data-position='fixed' data-role='header'>
+        {% if page.backbutton == true %}
+        <a class='back button' data-rel='back'></a>
+        {% else %}
+        <div class='menu button'>
+          <div></div>
+        </div>
+        {% endif %}
+        <div class='logo'></div>
+        <!--
+          <a class='register button'>
+            Register
+          </a>
+        -->
+        <div class='little-man'></div>
+        {% if page.search == true %}
+        <div class='search-wrap'>
+          <form class='search-runners'>
+            <input class='search-bar' data-role='none' placeholder='Search by name or bib #' type='text' />
+          </form>
+        </div>
+        {% endif %}
+      </header>
+      <section class='content' data-role='content'>
+        {{content}}
+      </section>
+      <footer data-position='fixed' data-role='footer'>
+        {{page.ad}}
+      </footer>
+    </div>
+  </body>
+</html>
