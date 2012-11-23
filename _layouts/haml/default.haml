@@ -7,10 +7,7 @@
 
 		%script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js")
 		%script(src="jquery.pikachoose.js")
-		%script(language="javascript")
-			$(document).ready(function (){
-				$("#pikame").PikaChoose();
-			});
+		%script(src="js/ready.js")
 		%title
 			{{page.title}}
 	%body			
@@ -38,5 +35,5 @@
 			%footer
 				%h6
 					Created by: Design Superhighway LLC. &copy; 2012.<br />
-					%a{:href="mailto:bsmith@designsuperhighway.com"}
+					%a(href="mailto:bsmith@designsuperhighway.com")
 						bsmith@designsuperhighway.com
